@@ -1,17 +1,20 @@
 <%- include('../partials/header') %>
-        <ul>
-            <% skills.forEach(function(s) { %>
-                <li>
-                    <a href="/skills/<%= s.id %>">
-                        <%= s.skill %>
-                    </a>
-                    -
-                    <%= s.done ? 'done' : 'not done' %>
-                </li>
-                <% }); %>
-        </ul>
+    <ul>
+        <% skills.forEach(function(s) { %>
+            <li>
+                <form action="/skills/<%= s.id %>?_method=DELETE" class="delete-form" method="POST">
+                    <button type="submit">X</button>
+                </form>
 
-<a href="/skills/new">Add a new skill</a>
+                <a href="/skills/<%= s.id %>">
+                    <%= s.skill %>
+                </a>
+                -
+                <%= s.done ? 'done' : 'not done' %>
+            </li>
+            <% }); %>
+    </ul>
 
-        <%- include('../partials/footer') %>
+    <a href="/skills/new">Add a new skill</a>
 
+    <%- include('../partials/footer') %>
